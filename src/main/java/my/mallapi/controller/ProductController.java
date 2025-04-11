@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -33,7 +32,7 @@ public class ProductController {
 
         List<MultipartFile> files = productDTO.getFiles();
         List<String> uploadFileNames = fileUtil.saveFiles(files);
-        productDTO.setUploadFilenames(uploadFileNames);
+        productDTO.setUploadFileNames(uploadFileNames);
 
         log.info(uploadFileNames);
 
@@ -72,7 +71,7 @@ public class ProductController {
         ProductDTO oldProductDTO = productService.get(pno);
 
         // 기존의 파일들
-        List<String> oldFileNames = oldProductDTO.getUploadFilenames();
+        List<String> oldFileNames = oldProductDTO.getUploadFileNames();
 
         // 새로 업로드 해야 하는 파일들
         List<MultipartFile> files = productDTO.getFiles();
@@ -81,7 +80,7 @@ public class ProductController {
         List<String> currentUploadFilesNames = fileUtil.saveFiles(files);
 
         // 화면에서 변화 없이 계속 유지된 파일들
-        List<String> uploadedFileNames = productDTO.getUploadFilenames();
+        List<String> uploadedFileNames = productDTO.getUploadFileNames();
 
         // 유지되는 파일들 + 새로 업로드된 파일 이름들이 저장해야 하는 파일 목록이 됨
         if (currentUploadFilesNames != null && !currentUploadFilesNames.isEmpty()) {
@@ -110,7 +109,7 @@ public class ProductController {
     public Map<String, String> remove(@PathVariable("pno") Long pno) {
 
         // 삭제해야 할 파일들 알아내기
-        List<String> oldFileNames = productService.get(pno).getUploadFilenames();
+        List<String> oldFileNames = productService.get(pno).getUploadFileNames();
 
         productService.remove(pno);
 

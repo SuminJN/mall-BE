@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -50,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
                     .build();
 
             String imageStr = productImage.getFileName();
-            productDTO.setUploadFilenames(List.of(imageStr));
+            productDTO.setUploadFileNames(List.of(imageStr));
 
             return productDTO;
         }).toList();
@@ -82,7 +81,7 @@ public class ProductServiceImpl implements ProductService {
                 .price(productDTO.getPrice())
                 .build();
 
-        List<String> uploadFileNames = productDTO.getUploadFilenames();
+        List<String> uploadFileNames = productDTO.getUploadFileNames();
 
         if (uploadFileNames == null) {
             return product;
@@ -120,7 +119,7 @@ public class ProductServiceImpl implements ProductService {
         // upload file -- clear first
         product.clearList();
 
-        List<String> uploadFileNames = productDTO.getUploadFilenames();
+        List<String> uploadFileNames = productDTO.getUploadFileNames();
 
         if(uploadFileNames != null) {
             uploadFileNames.forEach(product::addImageString);
@@ -150,7 +149,7 @@ public class ProductServiceImpl implements ProductService {
 
         List<String> fileNameList = imageList.stream().map(ProductImage::getFileName).toList();
 
-        productDTO.setUploadFilenames(fileNameList);
+        productDTO.setUploadFileNames(fileNameList);
 
         return productDTO;
     }

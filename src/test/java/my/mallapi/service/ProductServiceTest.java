@@ -36,7 +36,7 @@ class ProductServiceTest {
                 .price(1000)
                 .build();
 
-        productDTO.setUploadFilenames(
+        productDTO.setUploadFileNames(
                 List.of(UUID.randomUUID() + "_" + "Test1.jpg", UUID.randomUUID() + "_" + "Test2.jpg")
         );
 
@@ -52,6 +52,6 @@ class ProductServiceTest {
         ProductDTO productDTO = productService.get(pno);
 
         log.info(productDTO);
-        log.info(productDTO.getUploadFilenames());
+        log.info(productDTO.getUploadFileNames());
     }
 }
