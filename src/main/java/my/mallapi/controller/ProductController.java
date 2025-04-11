@@ -25,6 +25,7 @@ public class ProductController {
     private final ProductService productService;
     private final CustomFileUtil fileUtil;
 
+    // 상품 등록
     @PostMapping("/")
     public Map<String, Long> register(ProductDTO productDTO) {
 
@@ -42,11 +43,13 @@ public class ProductController {
         return Map.of("result", pno);
     }
 
+    // 상품 이미지 조회
     @GetMapping("/view/{fileName}")
     public ResponseEntity<Resource> viewFileGET(@PathVariable String fileName) {
         return fileUtil.getFile(fileName);
     }
 
+    // 상품 전체 조회
     @GetMapping("/list")
     public PageResponseDTO<ProductDTO> list(PageRequestDTO pageRequestDTO) {
 
@@ -54,11 +57,13 @@ public class ProductController {
         return productService.getList(pageRequestDTO);
     }
 
+    // 상품 단건 조회
     @GetMapping("/{pno}")
     public ProductDTO read(@PathVariable(name = "pno") Long pno) {
         return productService.get(pno);
     }
 
+    // 상품 수정
     @PutMapping("/{pno}")
     public Map<String, String> modify(@PathVariable(name = "pno") Long pno, ProductDTO productDTO) {
 
@@ -100,6 +105,7 @@ public class ProductController {
         return Map.of("RESULT", "SUCCESS");
     }
 
+    // 상품 삭제
     @DeleteMapping("/{pno}")
     public Map<String, String> remove(@PathVariable("pno") Long pno) {
 
