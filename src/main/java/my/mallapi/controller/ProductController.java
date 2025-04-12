@@ -9,6 +9,7 @@ import my.mallapi.service.ProductService;
 import my.mallapi.util.CustomFileUtil;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -49,6 +50,8 @@ public class ProductController {
     }
 
     // 상품 전체 조회
+//    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')") // 특정 권한 사용자에게 권한 부여
     @GetMapping("/list")
     public PageResponseDTO<ProductDTO> list(PageRequestDTO pageRequestDTO) {
 
