@@ -87,10 +87,10 @@ public class CartServiceImpl implements CartService {
     public List<CartItemListDTO> remove(Long cino) {
         Long cno = cartItemRepository.getCartFromItem(cino);
 
-        log.info("cart no: {}", cino);
+        log.info("cart no: {}", cno);
 
         cartItemRepository.deleteById(cino);
 
-        return cartItemRepository.getItemsOfCartDTOByCart(cino);
+        return cartItemRepository.getItemsOfCartDTOByCart(cno);
     }
 }
