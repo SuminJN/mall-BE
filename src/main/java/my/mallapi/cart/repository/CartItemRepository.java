@@ -11,7 +11,7 @@ import java.util.List;
 public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 
     @Query("select " +
-            "new my.mallapi.dto.CartItemListDTO(ci.cino, ci.qty, p.pno, p.pname, p.price, pi.fileName) " +
+            "new my.mallapi.cart.dto.CartItemListDTO(ci.cino, ci.qty, p.pno, p.pname, p.price, pi.fileName) " +
             "from " +
             "CartItem ci inner join Cart mc on ci.cart = mc " +
             "left join Product p on ci.product = p " +
@@ -31,7 +31,7 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
             "where ci.cino = :cino")
     public Long getCartFromItem(@Param("cino") Long cino);
 
-    @Query("select new my.mallapi.dto.CartItemListDTO(ci.cino, ci.qty, p.pno, p.pname, p.price, pi.fileName) " +
+    @Query("select new my.mallapi.cart.dto.CartItemListDTO(ci.cino, ci.qty, p.pno, p.pname, p.price, pi.fileName) " +
             "from CartItem ci inner join Cart mc on ci.cart = mc " +
             "left join Product p on ci.product = p " +
             "left join p.imageList pi " +
