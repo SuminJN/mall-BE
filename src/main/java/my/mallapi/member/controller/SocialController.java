@@ -38,6 +38,24 @@ public class SocialController {
         return claims;
     }
 
+    @GetMapping("/api/member/google")
+    public Map<String, Object> getMemberFromGoogle(String code) {
+        log.info("access Token ");
+        log.info(code);
+
+        MemberDTO memberDTO = memberService.getGoogleMember(code);
+
+        Map<String, Object> claims = memberDTO.getClaim();
+
+        String jwtAccessToken = JWTUtil.generateToken(claims, 10);
+        String jwtRefreshToken = JWTUtil.generateToken(claims, 60*24);
+
+        claims.put("accessToken", jwtAccessToken);
+        claims.put("refreshToken", jwtRefreshToken);
+
+        return claims;
+    }
+
     @PutMapping("/api/member/modify")
     public Map<String, String> modify(@RequestBody MemberModifyDTO memberModifyDTO) {
 
