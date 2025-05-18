@@ -1,8 +1,9 @@
 package my.mallapi.repository;
 
 import lombok.extern.log4j.Log4j2;
-import my.mallapi.domain.Member;
-import my.mallapi.domain.MemberRole;
+import my.mallapi.member.domain.Member;
+import my.mallapi.member.domain.MemberRole;
+import my.mallapi.member.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

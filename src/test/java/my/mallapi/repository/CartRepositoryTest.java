@@ -1,11 +1,13 @@
 package my.mallapi.repository;
 
 import lombok.extern.log4j.Log4j2;
-import my.mallapi.domain.Cart;
-import my.mallapi.domain.CartItem;
-import my.mallapi.domain.Member;
-import my.mallapi.domain.Product;
-import my.mallapi.dto.CartItemListDTO;
+import my.mallapi.cart.domain.Cart;
+import my.mallapi.cart.domain.CartItem;
+import my.mallapi.cart.repository.CartItemRepository;
+import my.mallapi.cart.repository.CartRepository;
+import my.mallapi.member.domain.Member;
+import my.mallapi.product.domain.Product;
+import my.mallapi.cart.dto.CartItemListDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

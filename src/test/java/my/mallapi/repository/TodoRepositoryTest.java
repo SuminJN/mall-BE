@@ -1,7 +1,8 @@
 package my.mallapi.repository;
 
 import lombok.extern.log4j.Log4j2;
-import my.mallapi.domain.Todo;
+import my.mallapi.todo.domain.Todo;
+import my.mallapi.todo.repository.TodoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,8 +13,6 @@ import org.springframework.data.domain.Sort;
 
 import java.time.LocalDate;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Log4j2

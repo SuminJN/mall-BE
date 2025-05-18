@@ -1,9 +1,10 @@
 package my.mallapi.service;
 
 import lombok.extern.log4j.Log4j2;
-import my.mallapi.dto.PageRequestDTO;
-import my.mallapi.dto.PageResponseDTO;
-import my.mallapi.dto.ProductDTO;
+import my.mallapi.commons.dto.PageRequestDTO;
+import my.mallapi.commons.dto.PageResponseDTO;
+import my.mallapi.product.dto.ProductDTO;
+import my.mallapi.product.service.ProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

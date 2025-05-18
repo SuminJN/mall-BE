@@ -1,7 +1,8 @@
 package my.mallapi.repository;
 
 import lombok.extern.log4j.Log4j2;
-import my.mallapi.domain.Product;
+import my.mallapi.product.domain.Product;
+import my.mallapi.product.repository.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

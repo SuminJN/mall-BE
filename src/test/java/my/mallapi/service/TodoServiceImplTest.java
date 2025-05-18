@@ -1,16 +1,15 @@
 package my.mallapi.service;
 
 import lombok.extern.log4j.Log4j2;
-import my.mallapi.dto.PageRequestDTO;
-import my.mallapi.dto.PageResponseDTO;
-import my.mallapi.dto.TodoDTO;
+import my.mallapi.commons.dto.PageRequestDTO;
+import my.mallapi.commons.dto.PageResponseDTO;
+import my.mallapi.todo.dto.TodoDTO;
+import my.mallapi.todo.service.TodoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Log4j2
