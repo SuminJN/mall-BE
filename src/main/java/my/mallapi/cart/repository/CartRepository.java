@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface CartRepository extends JpaRepository<Cart, Long> {
 
     @Query("select cart from Cart cart where cart.owner.email = :email")
-    public Optional<Cart> getCartOfMember(@Param("email") String email);
+    Optional<Cart> getCartOfMember(@Param("email") String email);
 }

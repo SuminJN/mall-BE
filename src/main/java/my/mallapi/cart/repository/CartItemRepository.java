@@ -19,17 +19,17 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
             "where " +
             "mc.owner.email = :email and pi.ord = 0 " +
             "order by ci.cino desc ")
-    public List<CartItemListDTO> getItemsOfCartDTOByEmail(@Param("email") String email);
+    List<CartItemListDTO> getItemsOfCartDTOByEmail(@Param("email") String email);
 
     @Query("select ci " +
             "from CartItem ci inner join Cart c on ci.cart = c " +
             "where c.owner.email = :email and ci.product.pno = :pno")
-    public CartItem getItemOfPno(@Param("email") String email, @Param("pno") Long pno);
+    CartItem getItemOfPno(@Param("email") String email, @Param("pno") Long pno);
 
     @Query("select c.cno " +
             "from Cart c inner join CartItem ci on ci.cart = c " +
             "where ci.cino = :cino")
-    public Long getCartFromItem(@Param("cino") Long cino);
+    Long getCartFromItem(@Param("cino") Long cino);
 
     @Query("select new my.mallapi.cart.dto.CartItemListDTO(ci.cino, ci.qty, p.pno, p.pname, p.price, pi.fileName) " +
             "from CartItem ci inner join Cart mc on ci.cart = mc " +
@@ -37,5 +37,5 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
             "left join p.imageList pi " +
             "where mc.cno = :cno and pi.ord = 0 " +
             "order by ci.cino desc")
-    public List<CartItemListDTO> getItemsOfCartDTOByCart(@Param("cno") Long cno);
+    List<CartItemListDTO> getItemsOfCartDTOByCart(@Param("cno") Long cno);
 }
